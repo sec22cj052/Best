@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sol_1_1773660109",
+    "ticket_text": "Server is completely down and database is wiped!",
+    "title": "Resolution for Database Ticket",
+    "category": "database",
+    "description": "Server is completely down and database is wiped!",
+    "steps": [
+      "1. Check the main cluster logs. 2. Restore DB from the 3am backup. 3. Restart the primary nodes."
+    ],
+    "notes": "HITL generated solution by AdminTest",
+    "created_at": "2026-03-16T16:51:49.616528"
+  },
+  {
+    "id": "sol_2_1773661448",
+    "ticket_text": "Login Issue\n\nI cannot login to my account even after password reset.",
+    "title": "Resolution for Login Ticket",
+    "category": "login",
+    "description": "Login Issue\n\nI cannot login to my account even after password reset.",
+    "steps": [
+      "will check and confirm please do mail for our customer support id cusotmercare@gmail.com"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-03-16T17:14:08.111356"
+  },
+  {
+    "id": "sol_3_1773661513",
+    "ticket_text": "The main DB server crashed and all data seems gone.",
+    "title": "Resolution for Database Ticket",
+    "category": "database",
+    "description": "The main DB server crashed and all data seems gone.",
+    "steps": [
+      "Thanks for informing us will be back shortly utill do wait"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-03-16T17:15:13.745619"
+  },
+  {
+    "id": "sol_4_1773661548",
+    "ticket_text": "Server is completely down and database is wiped!",
+    "title": "Resolution for Database Ticket",
+    "category": "database",
+    "description": "Server is completely down and database is wiped!",
+    "steps": [
+      "thank you for informing and thank you for using us will back shortly"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-03-16T17:15:48.382814"
+  }
+]
