@@ -30,7 +30,7 @@ def process_ticket(text: str, urgency: str = "Low", ticket_id: int = None) -> di
 
     # Initialize conversation thread
     messages = [
-        {"sender": "client", "message": text, "timestamp": timestamp}
+        {"sender": "user", "text": text, "timestamp": timestamp}
     ]
 
     # 1. Classification
@@ -69,8 +69,8 @@ def process_ticket(text: str, urgency: str = "Low", ticket_id: int = None) -> di
          ai_msg_text = "[DRAFT - Requires Human Review]\n\n" + ai_msg_text
 
     messages.append({
-        "sender": "ai",
-        "message": ai_msg_text,
+        "sender": "agent",
+        "text": ai_msg_text,
         "timestamp": datetime.utcnow().isoformat()
     })
 

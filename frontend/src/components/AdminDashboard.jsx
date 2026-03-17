@@ -129,35 +129,31 @@ export default function AdminDashboard({ tickets, refresh }) {
 
               {/* Conversation Area (Read Only for Admin during review, they respond below) */}
               <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                 {/* Original Ticket Text as first message if not using standard messages array effectively yet */}
-                 <div className="flex gap-4 flex-row">
-                    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
-                      <User className="w-4 h-4 text-slate-600" />
-                    </div>
-                    <div className="max-w-[75%] bg-white border border-slate-200 rounded-2xl p-4 shadow-sm text-slate-800">
-                      <div className="text-xs text-slate-500 mb-1">CLIENT • Original Request</div>
-                      <div className="text-sm leading-relaxed whitespace-pre-wrap">{selectedTicket.text}</div>
-                    </div>
-                  </div>
-
-                  {/* Show subsequent thread if it exists */}
-                  {selectedTicket.messages && selectedTicket.messages.map((msg, idx) => (
-                     <div key={idx} className={`flex gap-4 ${msg.sender === 'client' ? 'flex-row' : 'flex-row-reverse'}`}>
+                  {/* Show thread */}
+                  {selectedTicket.messages && selectedTicket.messages.map((msg, idx) => {
+                    const isUser = msg.sender === 'user';
+                    const isHumanMode = msg.sender === 'human';
+                    const isAgent = msg.sender === 'agent';
+                    
+                     return (
+                     <div key={idx} className={`flex gap-4 ${isUser ? 'flex-row' : 'flex-row-reverse'}`}>
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                        msg.sender === 'client' ? 'bg-slate-200' : 'bg-blue-100 text-blue-600'
+                        isUser ? 'bg-slate-200' : (isHumanMode ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-600')
                       }`}>
-                        {msg.sender === 'client' ? <User className="w-4 h-4 text-slate-600" /> : <Bot className="w-4 h-4" />}
+                        {isUser ? <User className="w-4 h-4 text-slate-600" /> : (isHumanMode ? <ShieldCheck className="w-4 h-4" /> : <Bot className="w-4 h-4" />)}
                       </div>
                       <div className={`max-w-[75%] rounded-2xl p-4 shadow-sm ${
-                        msg.sender === 'client' ? 'bg-white border border-slate-200 text-slate-800' : 'bg-blue-50 border border-blue-100 text-blue-900'
+                        isUser ? 'bg-white border border-slate-200 text-slate-800 rounded-tl-none' 
+                               : (isHumanMode ? 'bg-amber-50 border border-amber-200 text-amber-900 rounded-tr-none' 
+                                              : 'bg-blue-50 border border-blue-100 text-blue-900 rounded-tr-none')
                       }`}>
-                        <div className={`text-xs mb-1 ${msg.sender === 'client' ? 'text-slate-500' : 'text-blue-500/80'}`}>
-                          {msg.sender.toUpperCase()} • {new Date(msg.timestamp).toLocaleTimeString()}
+                        <div className={`text-xs mb-1 font-semibold ${isUser ? 'text-slate-500' : (isHumanMode ? 'text-amber-700' : 'text-blue-500/80')}`}>
+                          {isUser ? 'User' : (isHumanMode ? 'Human Agent' : 'AI Agent')} • {new Date(msg.timestamp).toLocaleString()}
                         </div>
-                        <div className="text-sm leading-relaxed whitespace-pre-wrap">{msg.message}</div>
+                        <div className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</div>
                       </div>
                     </div>
-                  ))}
+                  )})}
               </div>
 
               {/* Resolution Input Area */}

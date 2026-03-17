@@ -1,0 +1,56 @@
+[
+  {
+    "ticket_id": 1,
+    "original_prediction": "refund",
+    "correct_category": "refund",
+    "was_correct": true,
+    "original_confidence": 0.9712,
+    "human_resolution": "Please provide your name and what refund issues in your account\n",
+    "timestamp": "2026-03-16T18:17:22.464701"
+  },
+  {
+    "ticket_id": 1,
+    "original_prediction": "network",
+    "correct_category": "network",
+    "was_correct": true,
+    "original_confidence": 0.2255,
+    "human_resolution": "Gain solve gain know tag",
+    "timestamp": "2026-03-16T18:43:54.818782"
+  },
+  {
+    "ticket_id": 1,
+    "original_prediction": "login",
+    "correct_category": "login",
+    "was_correct": true,
+    "original_confidence": 0.6108,
+    "human_resolution": "we are solving it",
+    "timestamp": "2026-03-16T18:47:15.576209"
+  },
+  {
+    "ticket_id": 2,
+    "original_prediction": "network",
+    "correct_category": "network",
+    "was_correct": true,
+    "original_confidence": 0.5929,
+    "human_resolution": "solve it\n",
+    "timestamp": "2026-03-16T18:50:20.069039"
+  },
+  {
+    "ticket_id": 1,
+    "original_prediction": "network",
+    "correct_category": "network",
+    "was_correct": true,
+    "original_confidence": 0.197,
+    "human_resolution": "dfgdfgdfbnc ",
+    "timestamp": "2026-03-16T19:03:00.782915"
+  },
+  {
+    "ticket_id": 2,
+    "original_prediction": "login",
+    "correct_category": "login",
+    "was_correct": true,
+    "original_confidence": 0.9293,
+    "human_resolution": "cvh nv",
+    "timestamp": "2026-03-16T19:05:41.303236"
+  }
+]

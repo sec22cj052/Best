@@ -35,8 +35,8 @@ class TicketRequest(BaseModel):
 
 
 class ReplyRequest(BaseModel):
-    message: str
-    sender: str = "client"
+    text: str
+    sender: str = "user"
 
 
 class HITLResolveRequest(BaseModel):
@@ -120,9 +120,22 @@ def reply_ticket(ticket_id: int, req: ReplyRequest):
         
     ticket["messages"].append({
         "sender": req.sender,
-        "message": req.message,
+        "text": req.text,
         "timestamp": datetime.utcnow().isoformat()
     })
+
+    # If the user replies, the AI should respond
+    if req.sender == "user":
+        from app.agents.resolution_agent import resolve_ticket
+        # Resolve using the entire context (or just the latest text for simplicity)
+        resolution = resolve_ticket(req.text, ticket["classification"])
+        ai_msg_text = resolution["solution"]
+        
+        ticket["messages"].append({
+            "sender": "agent",
+            "text": ai_msg_text,
+            "timestamp": datetime.utcnow().isoformat()
+        })
     
     return ticket
 
@@ -146,9 +159,12 @@ def list_tickets():
             "auto_resolved": t["auto_resolved"],
             "requires_human": t["requires_human"],
             "resolution_source": t["resolution_source"],
+            "messages": t.get("messages", []),
             "incident_alert": t["incident_alert"],
             "timestamp": t["timestamp"],
             "total_pipeline_time_ms": t["total_pipeline_time_ms"],
+            "human_resolution": t.get("human_resolution", ""),
+            "ai_resolution": t.get("agent_results", {}).get("resolution", {}).get("solution", "")
         })
 
     # Sort tickets descending by urgency for the dashboard
@@ -179,6 +195,8 @@ def hitl_resolve_ticket(ticket_id: int, req: HITLResolveRequest):
     from app.services.solutions_db import add_solution
     from app.services.knowledge_base import add_human_solution_to_kb
     from app.agents.retrieval_agent import get_model
+    from app.learning.feedback_store import store_feedback
+    from app.learning.learning_service import check_auto_retrain
     from datetime import datetime
     
     ticket = get_ticket_by_id(ticket_id)
@@ -187,13 +205,23 @@ def hitl_resolve_ticket(ticket_id: int, req: HITLResolveRequest):
 
     # 1. Update ticket thread and status
     ticket["messages"].append({
-        "sender": "agent",
-        "message": req.step_by_step_resolution,
+        "sender": "human",
+        "text": req.step_by_step_resolution,
         "timestamp": datetime.utcnow().isoformat()
     })
     ticket["status"] = "human_resolved"
     ticket["requires_human"] = False
     
+    # Send feedback to training module
+    feedback = store_feedback(
+        ticket_id=ticket_id,
+        original_prediction=ticket["classification"],
+        correct_category=ticket["classification"],
+        original_confidence=ticket["confidence"],
+        human_resolution=req.step_by_step_resolution,
+    )
+    auto_retrained = check_auto_retrain()
+
     # 2. Add to separate solutions DB
     new_solution = add_solution(
         ticket_text=ticket["text"],
@@ -215,6 +243,7 @@ def hitl_resolve_ticket(ticket_id: int, req: HITLResolveRequest):
         "ticket_id": ticket_id,
         "solution_id": new_solution["id"],
         "rag_updated": True,
+        "auto_retrained": auto_retrained,
         "ticket": ticket
     }
 

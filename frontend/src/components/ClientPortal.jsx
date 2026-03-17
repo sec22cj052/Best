@@ -47,7 +47,7 @@ export default function ClientPortal({ tickets, refresh }) {
       const res = await fetch(`/api/tickets/${ticketId}/reply`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: replyText, sender: 'client' })
+        body: JSON.stringify({ text: replyText, sender: 'client' })
       })
       if (res.ok) {
         const updatedTicket = await res.json()
@@ -177,7 +177,7 @@ export default function ClientPortal({ tickets, refresh }) {
                       <div className={`text-xs mb-1 opacity-70 ${msg.sender === 'client' ? 'text-blue-100' : 'text-slate-500'}`}>
                         {msg.sender.toUpperCase()} • {new Date(msg.timestamp).toLocaleTimeString()}
                       </div>
-                      <div className="whitespace-pre-wrap text-sm leading-relaxed">{msg.message}</div>
+                      <div className="whitespace-pre-wrap text-sm leading-relaxed">{msg.text}</div>
                     </div>
                   </div>
                 ))}
