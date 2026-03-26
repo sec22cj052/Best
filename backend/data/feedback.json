@@ -52,5 +52,23 @@
     "original_confidence": 0.9293,
     "human_resolution": "cvh nv",
     "timestamp": "2026-03-16T19:05:41.303236"
+  },
+  {
+    "ticket_id": 1,
+    "original_prediction": "refund",
+    "correct_category": "refund",
+    "was_correct": true,
+    "original_confidence": 0.9896,
+    "human_resolution": "okay will mail you by eod",
+    "timestamp": "2026-03-23T15:11:58.124978"
+  },
+  {
+    "ticket_id": 3,
+    "original_prediction": "refund",
+    "correct_category": "refund",
+    "was_correct": true,
+    "original_confidence": 0.8808,
+    "human_resolution": " 1. Log into the billing portal with admin credentials\n  2. Navigate to Payment Methods section\n  3. Remove the expired/invalid payment method\n  4. Add new payment details and verify with a micro-transaction\n  5. Set the new method as default for future charges",
+    "timestamp": "2026-03-23T15:28:29.757256"
   }
 ]
