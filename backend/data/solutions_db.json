@@ -64,7 +64,6 @@
     "created_at": "2026-03-16T18:07:48.062016"
   },
   {
-    
     "id": "sol_6_1773664867",
     "ticket_text": "Password Reset for my account",
     "title": "Resolution for Refund Ticket",
@@ -75,7 +74,7 @@
     ],
     "notes": "HITL generated solution by human_admin",
     "created_at": "2026-03-16T18:11:07.904884"
-  } ,
+  },
   {
     "id": "sol_7_1773665242",
     "ticket_text": "Solve the refund issues of my account",
@@ -147,5 +146,41 @@
     ],
     "notes": "HITL generated solution by human_admin",
     "created_at": "2026-03-16T19:05:41.342704"
+  },
+  {
+    "id": "sol_13_1776123576",
+    "ticket_text": "seed demo",
+    "title": "Resolution for Network Ticket",
+    "category": "network",
+    "description": "seed demo",
+    "steps": [
+      "our sales person will contact you soon thank you for asking demo"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-04-14T05:09:36.145425"
+  },
+  {
+    "id": "sol_14_1776123698",
+    "ticket_text": "hiii",
+    "title": "Resolution for Network Ticket",
+    "category": "network",
+    "description": "hiii",
+    "steps": [
+      "hiii"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-04-14T05:11:38.064927"
+  },
+  {
+    "id": "sol_15_1776123849",
+    "ticket_text": "i want to cancel the order",
+    "title": "Resolution for Refund Ticket",
+    "category": "refund",
+    "description": "i want to cancel the order",
+    "steps": [
+      "what made you to cancel and if you want we can make the order in best prize too"
+    ],
+    "notes": "HITL generated solution by human_admin",
+    "created_at": "2026-04-14T05:14:09.937131"
   }
 ]

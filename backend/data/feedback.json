@@ -52,5 +52,32 @@
     "original_confidence": 0.9293,
     "human_resolution": "cvh nv",
     "timestamp": "2026-03-16T19:05:41.303236"
+  },
+  {
+    "ticket_id": 1,
+    "original_prediction": "network",
+    "correct_category": "network",
+    "was_correct": true,
+    "original_confidence": 0.2071,
+    "human_resolution": "our sales person will contact you soon thank you for asking demo",
+    "timestamp": "2026-04-14T05:09:36.143070"
+  },
+  {
+    "ticket_id": 2,
+    "original_prediction": "network",
+    "correct_category": "network",
+    "was_correct": true,
+    "original_confidence": 0.2664,
+    "human_resolution": "hiii ",
+    "timestamp": "2026-04-14T05:11:38.041245"
+  },
+  {
+    "ticket_id": 3,
+    "original_prediction": "refund",
+    "correct_category": "refund",
+    "was_correct": true,
+    "original_confidence": 0.9891,
+    "human_resolution": "what made you to cancel and if you want we can make the order in best prize too ",
+    "timestamp": "2026-04-14T05:14:09.914761"
   }
 ]

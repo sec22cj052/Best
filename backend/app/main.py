@@ -59,7 +59,7 @@ class RetrainRequest(BaseModel):
 
 @app.on_event("startup")
 async def startup():
-    print("\n🚀 Starting Multi-Agent AI Support Platform...")
+    print("\nStarting Multi-Agent AI Support Platform...")
     start = time.time()
 
     # Load embedding model (triggers download on first run)
@@ -75,7 +75,7 @@ async def startup():
     classify_ticket("warm up the model")
 
     elapsed = round(time.time() - start, 1)
-    print(f"✅ Platform ready in {elapsed}s\n")
+    print(f"Platform ready in {elapsed}s\n")
 
 
 # ────────────────────────────────────────────
